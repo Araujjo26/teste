@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ProMap</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img src="https://cdn-icons-png.flaticon.com/512/854/854878.png" alt="Logo" />
+      ProMap
+    </div>
+    <nav>
+      <a href="index.html">Início</a>
+      <a href="#locais-section">Locais</a>
+      <a href="contato.html">Contato</a>
+    </nav>
+  </header>
+  <main class="container">
+    <aside class="sidebar">
+      <div class="filter">
+        Filtrar por:
+        <select>
+          <option value="all">Todos</option>
+          <option value="restaurant">Restaurantes</option>
+          <option value="park">Parques</option>
+          <option value="museum">Museus</option>
+        </select>
+      </div>
+      <button class="btn-avaliar" type="button" onclick="location.href='avaliar.html'">Avaliar Local</button>
+
+      <section id="locais-section" class="local">
+        <h3>Parque Central</h3>
+        <div class="stars">★★★★☆ <span>(120 avaliações)</span></div>
+      </section>
+      <section class="local">
+        <h3>Restaurante Bom Sabor</h3>
+        <div class="stars">★★★★★ <span>(86 avaliações)</span></div>
+      </section>
+      <section class="local">
+        <h3>Museu Histórico</h3>
+        <div class="stars">★★★☆☆ <span>(45 avaliações)</span></div>
+      </section>
+    </aside>
+    <section class="mapa" aria-label="Mapa interativo mostrando locais">
+      <iframe 
+        src="https://www.openstreetmap.org/export/embed.html?bbox=-74.012%2C40.70%2C-73.93%2C40.80&amp;layer=mapnik"
+        style="border:0"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        title="Mapa Interativo"
+      ></iframe>
+    </section>
+  </main>
+</body>
+</html>
+

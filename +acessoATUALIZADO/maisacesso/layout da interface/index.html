@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Plataforma para avaliação de locais acessíveis." />
+  <link rel="stylesheet" href="/CSS/styles.css" />
+  <title>+Acesso</title>
+  <style>
+    /* Mantive seus estilos anteriores para simplicidade */
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #186125;
+      color: #fff;
+      padding: 10px 20px;
+      flex-wrap: wrap;
+    }
+    .logo-container {
+      display: flex;
+      align-items: center;
+    }
+    .logo-container img {
+      width: 50px;
+      height: auto;
+      border-radius: 10px;
+      margin-right: 10px;
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease;
+    }
+    .logo-container img:hover {
+      transform: scale(1.05);
+    }
+    .logo-text {
+      font-size: 1.8rem;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+    nav {
+      display: flex;
+      gap: 20px;
+    }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    nav a:hover {
+      color: #8dc695;
+    }
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      padding: 20px;
+    }
+    .sidebar {
+      flex: 1 1 300px;
+      padding: 20px;
+      background-color: #f3f3f3;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+    .mapa {
+      flex: 3 1 600px;
+      padding: 20px;
+      min-height: 450px;
+    }
+    .filter {
+      margin-bottom: 20px;
+    }
+    .btn-avaliar {
+      display: block;
+      width: 100%;
+      margin-bottom: 20px;
+      padding: 10px;
+      background-color: #186125;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .btn-avaliar:hover {
+      background-color: #00cef5;
+    }
+    .local {
+      margin-bottom: 20px;
+      background-color: #fff;
+      padding: 10px;
+      border-radius: 5px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    .stars {
+      color: #00cef5;
+    }
+    form {
+      margin-bottom: 20px;
+      background-color: #fff;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    form label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+    form input[type="text"],
+    form textarea,
+    form select {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+      font-size: 1rem;
+      resize: vertical;
+    }
+    form textarea {
+      height: 80px;
+    }
+    form button {
+      background-color: #2d2d2d;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background-color 0.3s;
+    }
+    form button:hover {
+      background-color: #00cef5;
+    }
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        text-align: center;
+      }
+      nav {
+        justify-content: center;
+        margin-top: 10px;
+      }
+      .container {
+        flex-direction: column;
+      }
+      .mapa, .sidebar {
+        flex: 1 1 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo-container">
+      <img src="IMG_4348.jpg" alt="Logo do +Acesso" />
+      <span class="logo-text">+ACESSO</span>
+    </div>
+    <nav>
+      <a href="index.html">Início</a>
+      <a href="locais.html">Locais</a>
+      <a href="sobre-nos.html">Sobre nós</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <aside class="sidebar">
+      <form id="addLocalForm">
+        <h3>Adicionar Local e Comentário</h3>
+
+        <label for="nomeLocal">Nome do Local:</label>
+        <input type="text" id="nomeLocal" name="nomeLocal" required />
+
+        <label for="tipoLocal">Tipo de Local:</label>
+        <select id="tipoLocal" name="tipoLocal" required>
+          <option value="">Selecione</option>
+          <option value="deficiente">Deficiente</option>
+          <option value="acompanhante">Acompanhante</option>
+          <option value="museum">Estabelecimento</option>
+        </select>
+
+        <label for="comentarioLocal">Comentário:</label>
+        <textarea id="comentarioLocal" name="comentarioLocal" required></textarea>
+
+        <label for="avaliacaoLocal">Avaliação (1 a 5 estrelas):</label>
+        <select id="avaliacaoLocal" name="avaliacaoLocal" required>
+          <option value="">Selecione</option>
+          <option value="1">★☆☆☆☆</option>
+          <option value="2">★★☆☆☆</option>
+          <option value="3">★★★☆☆</option>
+          <option value="4">★★★★☆</option>
+          <option value="5">★★★★★</option>
+        </select>
+
+        <input type="text" hidden id="latLocal" name="latLocal" required />
+        <input type="text" hidden id="lngLocal" name="lngLocal" required />
+
+        <button type="submit">Adicionar Local</button>
+      </form>
+
+      <div class="filter">
+        Filtrar por:
+        <select id="filterSelect">
+          <option value="all">Todos</option>
+          <option value="deficiente">Deficiente</option>
+          <option value="acompanhante">Acompanhante</option>
+          <option value="museum">Estabelecimento</option>
+        </select>
+      </div>
+
+      <button class="btn-avaliar" type="button" onclick="document.getElementById('addLocalForm').scrollIntoView({behavior:'smooth'})">Avaliar Local</button>
+
+      <div id="locaisLista">
+        <!-- Locais mockados aqui -->
+      </div>
+    </aside>
+
+    <section id="map" class="mapa" aria-label="Mapa interativo mostrando locais"></section>
+  </main>
+
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB9HJOePwY-Y152fCYTj_leQ0ivudEM1ns"></script>
+  <script>
+    let map;
+    let markers = [];
+
+    function estrelasHTML(num) {
+      return '★'.repeat(num) + '☆'.repeat(5 - num);
+    }
+
+    function carregarLocaisDoServidor() {
+  fetch('http://localhost:3000/locais')
+    .then(response => response.json())
+    .then(locais => {
+      const locaisLista = document.getElementById('locaisLista');
+      locaisLista.innerHTML = ''; // limpa a lista anterior
+
+      locais.forEach(local => {
+        // Adiciona ao mapa
+        const marker = new google.maps.Marker({
+          position: { lat: local.latitude, lng: local.longitude },
+          map: map,
+          title: local.nome,
+        });
+
+        const infoWindow = new google.maps.InfoWindow({
+          content: `<strong>${local.nome}</strong><br>${estrelasHTML(local.avaliacao)}<br>${local.comentario}`,
+        });
+
+        marker.addListener('click', () => {
+          infoWindow.open(map, marker);
+        });
+
+        markers.push(marker);
+
+        // Adiciona à lista lateral
+        const localSection = document.createElement('section');
+        localSection.className = 'local';
+        localSection.dataset.tipo = local.tipo;
+        localSection.dataset.lat = local.latitude;
+        localSection.dataset.lng = local.longitude;
+        localSection.innerHTML = `
+          <h3>${local.nome}</h3>
+          <div class="stars">${estrelasHTML(local.avaliacao)}</div>
+          <p>${local.comentario}</p>
+        `;
+        locaisLista.appendChild(localSection);
+      });
+    })
+    .catch(err => console.error('Erro ao carregar locais:', err));
+}
+
+    function initMap() {
+      map = new google.maps.Map(document.getElementById("map"), {
+        center: { lat: -22.8513, lng: -45.2365 },
+        zoom: 14,
+      });
+
+      carregarLocaisDoServidor();
+
+      map.addListener('click', (e) => {
+        document.getElementById('latLocal').value = e.latLng.lat().toFixed(6);
+        document.getElementById('lngLocal').value = e.latLng.lng().toFixed(6);
+        document.getElementById('addLocalForm').scrollIntoView({ behavior: 'smooth' });
+      });
+    }
+
+    window.onload = () => {
+      initMap();
+
+      const form = document.getElementById('addLocalForm');
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const nome = form.nomeLocal.value.trim();
+        const tipo = form.tipoLocal.value;
+        const comentario = form.comentarioLocal.value.trim();
+        const avaliacao = parseInt(form.avaliacaoLocal.value);
+        const lat = parseFloat(form.latLocal.value);
+        const lng = parseFloat(form.lngLocal.value);
+
+        if (!nome || !tipo || !comentario || !avaliacao || isNaN(lat) || isNaN(lng)) {
+          alert('Preencha todos os campos corretamente.');
+          return;
+        }
+
+        // Adiciona no DOM
+        const locaisLista = document.getElementById('locaisLista');
+        const localSection = document.createElement('section');
+        localSection.className = 'local';
+        localSection.dataset.tipo = tipo;
+        localSection.dataset.lat = lat;
+        localSection.dataset.lng = lng;
+        localSection.innerHTML = `
+          <h3>${nome}</h3>
+          <div class="stars">${estrelasHTML(avaliacao)} <span>(nova avaliação)</span></div>
+          <p>${comentario}</p>
+        `;
+        locaisLista.appendChild(localSection);
+
+        // Adiciona no mapa
+        const marker = new google.maps.Marker({
+          position: { lat, lng },
+          map: map,
+          title: nome,
+        });
+
+        const infoWindow = new google.maps.InfoWindow({
+          content: `<strong>${nome}</strong><br>${estrelasHTML(avaliacao)}<br>${comentario}`,
+        });
+
+        marker.addListener('click', () => {
+          infoWindow.open(map, marker);
+        });
+
+        markers.push(marker);
+
+        // Salva no servidor
+        fetch('http://localhost:3000/locais', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            nome,
+            tipo,
+            comentario,
+            avaliacao,
+            latitude: lat,
+            longitude: lng,
+          }),
+        })
+        .then(res => {
+          if (!res.ok) throw new Error('Erro ao salvar no servidor');
+          console.log('Local salvo com sucesso!');
+        })
+        .catch(err => console.error(err));
+
+        form.reset();
+      });
+
+      // Filtro
+      const filterSelect = document.getElementById('filterSelect');
+      filterSelect.addEventListener('change', () => {
+        const tipoFiltro = filterSelect.value;
+        const locais = document.querySelectorAll('#locaisLista .local');
+
+        locais.forEach(local => {
+          const tipoLocal = local.dataset.tipo;
+          const isVisible = tipoFiltro === 'all' || tipoLocal === tipoFiltro;
+          local.style.display = isVisible ? 'block' : 'none';
+
+          const lat = parseFloat(local.dataset.lat);
+          const lng = parseFloat(local.dataset.lng);
+
+          markers.forEach(marker => {
+            const pos = marker.getPosition();
+            if (pos.lat() === lat && pos.lng() === lng) {
+              marker.setVisible(isVisible);
+            }
+          });
+        });
+      });
+    };
+  </script>
+</body>
+</html>

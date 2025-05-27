@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Plataforma para avaliação de locais acessíveis." />
+  <title>+Acesso</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #2d2d2d;
+      color: #fff;
+      padding: 10px 20px;
+      flex-wrap: wrap;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo-container img {
+      width: 50px;
+      height: auto;
+      border-radius: 10px;
+      margin-right: 10px;
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease;
+    }
+
+    .logo-container img:hover {
+      transform: scale(1.05);
+    }
+
+    .logo-text {
+      font-size: 1.8rem;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    nav {
+      display: flex;
+      gap: 20px;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #0c09cf;
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      padding: 20px;
+    }
+
+    .sidebar {
+      flex: 1 1 300px;
+      padding: 20px;
+      background-color: #f3f3f3;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .mapa {
+      flex: 3 1 600px;
+      padding: 20px;
+    }
+
+    iframe {
+      width: 100%;
+      height: 450px;
+      border: 0;
+      border-radius: 8px;
+    }
+
+    .filter {
+      margin-bottom: 20px;
+    }
+
+    .btn-avaliar {
+      display: block;
+      width: 100%;
+      margin-bottom: 20px;
+      padding: 10px;
+      background-color: #2d2d2d;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .btn-avaliar:hover {
+      background-color: #0c09cf;
+    }
+
+    .local {
+      margin-bottom: 20px;
+    }
+
+    .stars {
+      color: #0c09cf;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      nav {
+        justify-content: center;
+        margin-top: 10px;
+      }
+
+      .container {
+        flex-direction: column;
+      }
+
+      .mapa, .sidebar {
+        flex: 1 1 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo-container">
+      <img src="IMG_4348.jpg" alt="Logo do +Acesso" />
+      <span class="logo-text">+ACESSO</span>
+    </div>
+    <nav>
+      <a href="index.html">Início</a>
+      <a href="locais.html">Locais</a>
+      <a href="sobre-nos.html">Sobre nós</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <aside class="sidebar">
+      <div class="filter">
+        Filtrar por:
+        <select>
+          <option value="all">Todos</option>
+          <option value="deficiente">Deficiente</option>
+          <option value="acompanhante">Acompanhante</option>
+          <option value="museum">Estabelecimento</option>
+        </select>
+      </div>
+      <button class="btn-avaliar" type="button">Avaliar Local</button>
+
+      <section class="local">
+        <h3>Parque Central</h3>
+        <div class="stars">★★★★☆ <span>(120 avaliações)</span></div>
+      </section>
+      <section class="local">
+        <h3>Restaurante Bom Sabor</h3>
+        <div class="stars">★★★★★ <span>(86 avaliações)</span></div>
+      </section>
+      <section class="local">
+        <h3>Museu Histórico</h3>
+        <div class="stars">★★★☆☆ <span>(45 avaliações)</span></div>
+      </section>
+    </aside>
+
+    <section class="mapa" aria-label="Mapa interativo mostrando locais">
+      <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14614.584161184425!2d-45.23658205118786!3d-22.851333527122153!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94cc8ffdfb5cccb5%3A0x5fa7f2e9a38e9377!2sSantu%C3%A1rio%20Nacional%20de%20Nossa%20Senhora%20Aparecida!5e0!3m2!1spt-BR!2sbr!4v1716399834535!5m2!1spt-BR!2sbr"
+        allowfullscreen 
+        loading="lazy" 
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </section>
+  </main>
+</body>
+</html>
